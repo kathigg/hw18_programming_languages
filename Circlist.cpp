@@ -1,5 +1,8 @@
 #include<iostream>
 using namespace std;
+template <typename T> class circlist;
+template <typename T>
+ostream& operator<<(ostream& os, const circlist<T>& list);
 
 template <typename T>
 class cell
@@ -70,12 +73,13 @@ class Queue : private circlist<T>
         T leaveq() { return circlist<T>::pop();}
 };
 
+template <typename T> class circlist; // forward declaration 
 template <typename T>
 ostream& operator<<(ostream& os, const circlist<T>& list) {
-    cell<T>* placeholder = list->rear->next;
-    while (placeholder->info != T()) {
+    cell<T>* placeholder = list.rear->next;
+    while (placeholder != list.rear) {
         os << placeholder->info; 
-        placeholder = placeholder->next;;
+        placeholder = placeholder->next;
     }
     return os;
 }
