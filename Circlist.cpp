@@ -5,7 +5,7 @@ template <typename T>
 class cell
 {
 
-    friend class circlist;
+    friend class circlist<T>;
     private: 
        T info;
        cell<T>* next;
@@ -20,7 +20,7 @@ class circlist
     cell<T>* rear;
   public:
     int empty() { return rear == rear->next;}
-    circlist() { rear = new cell(0); }
+    circlist() { rear = new cell<T>(T()); }
     void push(T);
     T pop();
     void enter(T);
@@ -29,14 +29,14 @@ class circlist
 template <typename T>
 void circlist<T>::push(T x)
 {
-   rear->next = new cell (x, rear->next);
+   rear->next = new cell<T> (x, rear->next);
 }
 
 template <typename T>
 void circlist<T>::enter(T x)
 {
   rear->info = x;
-  rear = rear->next = new cell(0, rear->next);
+  rear = rear->next = new cell<T>(T(), rear->next);
 }
 
 template <typename T>
@@ -68,11 +68,12 @@ class Queue : private circlist
         void enque(T i) { circlist::enter(i);}
         int leaveq() { return circlist::pop();}
 };
-template <typename T>
+
+
 int main()
 {
 
-  Stack<T> s;
+  Stack<int> s;
   s.push(20); s.push(10); s.push(9);
   cout << s.pop() <<endl;
   cout << s.pop() <<endl;
