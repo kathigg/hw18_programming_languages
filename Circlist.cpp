@@ -8,54 +8,61 @@ class cell
     friend class circlist;
     private: 
        T info;
-       cell* next;
+       cell<T>* next;
        cell ( T i )  { info = i; next = this; }
-       cell ( T i, cell* ptr)  { info = i; next = ptr; }
+       cell ( T i, cell<T>* ptr)  { info = i; next = ptr; }
 };
 
+template <typename T>
 class circlist
 {
   private:
-    cell* rear;
+    cell<T>* rear;
   public:
     int empty() { return rear == rear->next;}
     circlist() { rear = new cell(0); }
-    void push(int);
-    int pop();
-    void enter(int);
+    void push(T);
+    T pop();
+    void enter(T);
 };
 
-void circlist::push(int x)
+template <typename T>
+void circlist<T>::push(T x)
 {
    rear->next = new cell (x, rear->next);
 }
 
-void circlist::enter(int x)
+template <typename T>
+void circlist<T>::enter(T x)
 {
   rear->info = x;
   rear = rear->next = new cell(0, rear->next);
 }
 
-int circlist::pop()
+template <typename T>
+int circlist<T>::pop()
 {
    if ( empty() ) return 0;
-   cell *front = rear->next;
+   cell *front<T> = rear->next;
    rear->next  = front->next;
-   int x = front->info;
+   T x = front->info;
    delete front;
    return x;
 }
 
-class Stack : private circlist
+template <typename T>
+class Stack : private circlist<T>
 {
     public:
        using circlist::pop;
        using circlist::push;
 };
+
+template <typename T>
 class Queue : private circlist
 {
      public:
-        void enque(int i) { circlist::enter(i);}
+        void enque(T i) { circlist::enter(i);}
         int leaveq() { return circlist::pop();}
 };
 int main()
