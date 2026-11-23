@@ -72,9 +72,12 @@ class Queue : private circlist<T>
 
 template <typename T>
 ostream& operator<<(ostream& os, const circlist<T>& list) {
-    for (int i = 0; i < list.length(); i++) {
-
+    cell<T>* placeholder = list->rear->next;
+    while (placeholder->info != T()) {
+        os << placeholder->info; 
+        placeholder = placeholder->next;;
     }
+    return os;
 }
 
 int main()
