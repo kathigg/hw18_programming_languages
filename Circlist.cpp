@@ -9,6 +9,7 @@ class cell
 {
 
     friend class circlist<T>;
+    friend ostream& operator<< <T>(ostream& os, const circlist<T>& list);
     private: 
        T info;
        cell<T>* next;
@@ -73,7 +74,6 @@ class Queue : private circlist<T>
         T leaveq() { return circlist<T>::pop();}
 };
 
-template <typename T> class circlist; // forward declaration 
 template <typename T>
 ostream& operator<<(ostream& os, const circlist<T>& list) {
     cell<T>* placeholder = list.rear->next;
@@ -99,9 +99,6 @@ int main()
   circ.push(11);
   circ.enter(20);
   circ.push(10);
-  return 0;
-
   cout << circ << endl; 
-
+  return 0;
 }
-
