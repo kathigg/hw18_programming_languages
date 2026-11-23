@@ -19,6 +19,7 @@ class circlist
   private:
     cell<T>* rear;
   public:
+    friend ostream& operator<< <T>(ostream& os, const circlist<T>& list);
     int empty() { return rear == rear->next;}
     circlist() { rear = new cell<T>(T()); }
     void push(T);
@@ -69,8 +70,11 @@ class Queue : private circlist<T>
         T leaveq() { return circlist<T>::pop();}
 };
 
+template <typename T>
 ostream& operator<<(ostream& os, const circlist<T>& list) {
+    for (int i = 0; i < list.length(); i++) {
 
+    }
 }
 
 int main()
