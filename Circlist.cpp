@@ -1,14 +1,16 @@
 #include<iostream>
 using namespace std;
+
+template <typename T>
 class cell
 {
 
     friend class circlist;
     private: 
-       int info;
+       T info;
        cell* next;
-       cell (int i )  { info = i; next = this; }
-       cell (int i, cell* ptr)  { info = i; next = ptr; }
+       cell ( T i )  { info = i; next = this; }
+       cell ( T i, cell* ptr)  { info = i; next = ptr; }
 };
 
 class circlist
