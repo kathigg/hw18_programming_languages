@@ -40,7 +40,7 @@ void circlist<T>::enter(T x)
 }
 
 template <typename T>
-int circlist<T>::pop()
+<T> circlist<T>::pop()
 {
    if ( empty() ) return 0;
    cell *front<T> = rear->next;
