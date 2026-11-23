@@ -101,5 +101,7 @@ int main()
   circ.push(10);
   return 0;
 
+  cout << circ << endl; 
+
 }
 
