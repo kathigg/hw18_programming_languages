@@ -80,7 +80,7 @@ int main()
   cout << s.pop() <<endl;
 
 
-  circlist circ;
+  circlist<int> circ;
   circ.push(10);
   circ.push(11);
   circ.enter(20);
