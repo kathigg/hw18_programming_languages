@@ -69,6 +69,9 @@ class Queue : private circlist<T>
         T leaveq() { return circlist<T>::pop();}
 };
 
+ostream& operator<<(ostream& os, const circlist<T>& list) {
+
+}
 
 int main()
 {
