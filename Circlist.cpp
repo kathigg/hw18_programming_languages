@@ -65,8 +65,8 @@ template <typename T>
 class Queue : private circlist
 {
      public:
-        void enque(T i) { circlist::enter(i);}
-        int leaveq() { return circlist::pop();}
+        void enque(T i) { circlist<T>::enter(i);}
+        int leaveq() { return circlist<T>::pop();}
 };
 
 
