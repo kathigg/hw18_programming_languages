@@ -42,8 +42,11 @@ void circlist<T>::enter(T x)
 template <typename T>
 T circlist<T>::pop()
 {
-   if ( empty() ) return 0;
-   cell *front<T> = rear->next;
+    // T() gives you the default value, 
+    // like 0 for numbers and empty string 
+    // for strings, etc
+   if ( empty() ) return T(); 
+   cell<T> *front = rear->next;
    rear->next  = front->next;
    T x = front->info;
    delete front;
