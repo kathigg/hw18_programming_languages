@@ -57,8 +57,8 @@ template <typename T>
 class Stack : private circlist<T>
 {
     public:
-       using circlist::pop;
-       using circlist::push;
+       using circlist<T>::pop;
+       using circlist<T>::push;
 };
 
 template <typename T>
