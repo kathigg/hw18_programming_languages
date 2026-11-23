@@ -62,11 +62,11 @@ class Stack : private circlist<T>
 };
 
 template <typename T>
-class Queue : private circlist
+class Queue : private circlist<T>
 {
      public:
         void enque(T i) { circlist<T>::enter(i);}
-        int leaveq() { return circlist<T>::pop();}
+        T leaveq() { return circlist<T>::pop();}
 };
 
 
